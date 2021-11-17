@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="logout">
+    <form action="{% url 'home'%}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Home">
+    </form>
+</div>
+
+<center><h1>Werehouse List</h1></center>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <td>Warehouse Id</td>
+        <td>Warehouse Name</td>
+        <td>Address</td>
+        <td>City Id</td>
+        <td>Werehouse Created</td>
+        <td>Werehouse Modify</td>
+    </tr>
+    {% for i in wh %}
+
+    <tr>
+        <td>{{i.warehouseid}}</td>
+        <td>{{i.warehousename}}</td>
+        <td>{{i.address}}</td>
+        <td>{{i.werehousecity}}</td>
+        <td>{{i.created}}</td>
+        <td>{{i.modify}}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

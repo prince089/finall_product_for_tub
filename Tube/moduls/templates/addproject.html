@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+       <style>
+         .logout{
+            position:absolute;
+            top:0;
+            right:0;
+            display: inline;
+            background-color: aquamarine;
+        }
+
+    </style>
+</head>
+<body>
+<div class="logout">
+    <form action="{% url 'home'%}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Home">
+    </form>
+</div>
+<center><h5>Add Project</h5></center>
+{% for j in messages %}
+<h3>{{j}}</h3>
+{{break}}
+{% endfor %}
+
+<form action="{% url 'addproject' %}" method="post">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td>Project Title</td>
+            <td><input type="text" placeholder="project title" name="projecttitle"></td>
+        </tr>
+        <tr>
+           <td>Client ID</td>
+            <td>
+                <select name="cid" id="">
+                    {% for b in clid %}
+                    <option value="{{b.clientid}}">id:{{b.clientid}}, Name:{{b.clientname}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+             <td><marquee  direction="left" scrollamount="5" width="100%">
+if you don't get Client id then first insert Client
+</marquee></td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td><input type="text" placeholder="address" name="address"></td>
+        </tr>
+        <tr>
+            <td>Project City</td>
+            <td><input type="text" placeholder="cityName" name="projectcity"></td>
+        </tr>
+        <tr>
+            <td>Phone number</td>
+            <td><input type="text" placeholder="Phone number" name="contectnumber" maxlength="12"></td>
+        </tr>
+        <tr>
+            <td>Status</td>
+            <td>
+                <select name="status">
+                    <option value="inactive">inactive</option>
+                    <option value="active">active</option>
+                     <option value="deleted">deleted</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="right"> </td>
+        </tr>
+    </table>
+    <input type="submit" value="Add project">
+</form>
+</body>
+</html>

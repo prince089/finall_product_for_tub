@@ -1,0 +1,100 @@
+<html dir="ltr" lang="en-us">
+{% load static %}
+{% csrf_token %}
+
+<head>
+    <title>Log in </title>
+    <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
+
+
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'responsive.css' %}">
+
+
+    <meta name="robots" content="NONE,NOARCHIVE">
+</head>
+
+
+<body class="login" data-admin-utc-offset="0" cz-shortcut-listen="true">
+
+<!-- Container -->
+<div id="container" class="">
+
+
+    <!-- Header -->
+    <div id="header" class="">
+        <div id="branding">
+
+            <h1 id="site-name"> Log-in</h1>
+
+        </div>
+
+
+    </div>
+    <!-- END Header -->
+
+
+    <div class="main shifted" id="main">
+
+
+        <div class="content">
+
+
+            <!-- Content -->
+            <div id="content" class="colM">
+                  {%for msg in messages%}
+                  <div class="errornote"><p>{{msg}}</p></div>
+            {{ break }}
+            {% endfor %}
+
+
+                <div id="content-main">
+
+
+                    <form action="index" method="post">
+                        <div class="form-row">
+                            {% csrf_token %}
+
+                            <label class="required" for="id_username">Username:</label> <input type="text" name="id"
+                                                                                               autofocus=""
+                                                                                               autocapitalize="none"
+                                                                                               autocomplete="username"
+                                                                                               maxlength="150"
+                                                                                               required=""
+                                                                                               id="id_username">
+                        </div>
+                        <div class="form-row">
+
+                            <label class="required" for="id_password">Password:</label> <input type="password"
+                                                                                               name="psd"
+                                                                                               autocomplete="current-password"
+                                                                                               required=""
+                                                                                               id="id_password">
+                            <input type="hidden" name="next" value="/admin/">
+                        </div>
+
+
+                        <div class="submit-row">
+                            <input type="submit" value="Log in">
+                        </div>
+                    </form>
+
+                </div>
+
+
+                <br class="clear">
+            </div>
+            <!-- END Content -->
+            <div id="footer"></div>
+        </div>
+    </div>
+</div>
+<!-- END Container -->
+
+
+</body>
+
+</html>

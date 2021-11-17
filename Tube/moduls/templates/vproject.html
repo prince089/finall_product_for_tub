@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="logout">
+    <form action="{% url 'home'%}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Home">
+    </form>
+</div>
+
+<center><h1>Project List</h1></center>
+<table border="1" cellpadding="10">
+    <tr>
+        <td>Project id</td>
+        <td>Project title</td>
+        <td>client id</td>
+        <td>Project Address</td>
+        <td>Contect number</td>
+        <td>Project City</td>
+        <td>Project State</td>
+        <td>Project Created</td>
+        <td>Project Modify</td>
+    </tr>
+    {% for i in pd %}
+    <tr>
+        <td>{{i.projectid}}</td>
+        <td>{{i.projecttitle}}</td>
+        <td>{{i.clientid.clientid}}</td>
+        <td>{{i.address}}</td>
+
+        <td>{{i.contecnumber}}</td>
+        <td>{{i.projectcity}}</td>
+        <td>{{i.state}}</td>
+        <td>{{i.created}}</td>
+        <td>{{i.modify}}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

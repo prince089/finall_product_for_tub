@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+         .logout{
+            position:absolute;
+            top:0;
+            right:0;
+            display: inline;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+<div class="logout">
+    <form action="{% url 'home'%}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Home">
+    </form>
+</div>
+<div class="logout">
+    <form action="{% url 'home'%}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Home">
+    </form>
+</div>
+{% for j in messages %}
+<h3>{{j}}</h3>
+{{break}}
+{% endfor %}
+<form action="{% url 'addequepment'%}" method="post">
+    {% csrf_token %}
+    <table cellpadding="5">
+        <tr>
+            <td>Serial Number</td>
+            <td><input type="text" placeholder="serial number" name="serialnumber"></td>
+        </tr>
+        <tr>
+            <td>Equipment Name</td>
+            <td>
+                <select name="idname">
+                    {% for x in eq%}
+                    <option value="{{x.equepmentid}}">Id : {{x.equepmentid}} name : {{x.equepmentname}}</option>
+                    {% endfor %}
+                </select>
+
+
+            </td>
+            <td><marquee  direction="left" scrollamount="5" width="100%">
+if you don't get Equipment name  then first register Equipment
+</marquee></td>
+        </tr>
+        <tr>
+            <td>City Name</td>
+            <td><input type="text" placeholder="cityname" name="cityid"></td>
+        </tr>
+        <tr>
+            <td>Plant id</td>
+            <td>
+
+                <select name="plantid" id="">
+                     {% for a in plant %}
+                        <option value="{{a.plantid}}">id:{{a.plantid}} , Name:{{a.title}}</option>
+                     {% endfor %}
+                </select>
+            </td>
+            <td><marquee  direction="left" scrollamount="5">
+if you don't get plant id then first insert plant data
+</marquee></td>
+        </tr>
+        <tr>
+            <td>Status</td>
+            <td>
+                <select name="status">
+                    <option value="inactive">inactive</option>
+                    <option value="active">active</option>
+                     <option value="deleted">deleted</option>
+                </select>
+            </td>
+
+        </tr>
+        <tr>
+            <td>Descripation</td>
+            <td><input type="text" placeholder="descripation" name="descripation"></td>
+        </tr>
+        <tr>
+            <td>Dimension</td>
+            <td><input type="text" placeholder="dimension" name="dimension"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="right"><input type="submit" value="Add equepment"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

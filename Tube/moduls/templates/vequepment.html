@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="logout">
+    <form action="{% url 'home'%}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Home">
+    </form>
+</div>
+
+<center><h1>Equipment List</h1></center>
+
+<form action="{%url 'vequepment'%}" method="post">
+    {% csrf_token %}
+    <select name="search">
+        
+        {% for a in ed %}
+        <option value="{{a.equepmentid.equepmentid}}">{{a.equepmentid.equepmentname}}</option>
+        {% endfor %}
+    </select>
+    &nbsp;&nbsp;&nbsp;
+    <input type="submit" value="search">
+
+</form>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <td>Serial number</td>
+        <td>Equipment name</td>
+        <td>Equipment Id</td>
+        <td>City Name</td>
+        <td>Plant id</td>
+        <td>Equipment Status</td>
+        <td>Equipment Created</td>
+        <td>Equipment Modify</td>
+        <td>Equipment Details</td>
+        <td>Equipment Dimension</td>
+
+    </tr>
+    <tr>
+        {% for i in edt %}
+        <td>{{i.equepmentSerialNumbeer}}</td>
+        <td>{{i.equepmentid.equepmentname}}</td>
+        <td>{{i.equepmentid.equepmentid}}</td>
+        <td>{{i.equepmentcity}}</td>
+        <td>{{i.plantid.plantid}}</td>
+        <td>{{i.status}}</td>
+        <td>{{i.created}}</td>
+        <td>{{i.modify}}</td>
+        <td>{{i.details}}</td>
+        <td>{{i.dimension}}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
