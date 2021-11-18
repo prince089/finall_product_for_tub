@@ -52,13 +52,13 @@ admin.site.register(Project,userProject)
 
 
 class userPlant(admin.ModelAdmin):
-    list_display = ('plantid','title','projectid','created','modify')
+    list_display = ('plantid','title','city','projectid','created','modify')
 
 
 admin.site.register(Plant,userPlant)
 
 class useEquepmentMaster(admin.ModelAdmin):
-    list_display = ('equepmentid','equepmentSerialNumbeer','equepmentcity','plantid','status','created','modify','details','dimension')
+    list_display = ('equepmentid','equepmentSerialNumbeer','equepmentcity','plantid','status','created','modify','details','dimension','warehouseid')
 
 
 admin.site.register(EquepmentMaster,useEquepmentMaster)

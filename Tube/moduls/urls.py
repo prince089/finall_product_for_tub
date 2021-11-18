@@ -17,5 +17,7 @@ urlpatterns = [
     path('vplant',views.vplant,name = "vplant"),
     path('vproject',views.vproject,name="vproject"),
     path('vwherehouse',views.vwherehouse,name="vwherehouse"),
-    path('addregisterEquipment',views.registerequipment,name="registerequipement")
+    path('addregisterEquipment',views.registerequipment,name="registerequipement"),
+    path('returnEquipment',views.returnequipmant,name="returnequipment"),
+    path('assignEquipment',views.assign,name = "assigenequipment")
 ]

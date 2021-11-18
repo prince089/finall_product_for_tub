@@ -21,7 +21,7 @@
     <input type="submit" value="Home">
     </form>
 </div>
-<center><h5>Add plant</h5></center>
+<center><h1>Add plant</h1></center>
 {% for j in messages %}
 <h3>{{j}}</h3>
 {{break}}
@@ -45,6 +45,10 @@
              <td><marquee  direction="left" scrollamount="5" width="100%">
 if you don't get Client id then first insert Client
 </marquee></td>
+        </tr>
+        <tr>
+            <td>City</td>
+            <td><input type="text" name="city"></td>
         </tr>
         <tr>
             <td colspan="2" align="right"> <input type="submit" value="Add Plant"></td>

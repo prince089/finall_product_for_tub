@@ -26,6 +26,7 @@
     <input type="submit" value="Home">
     </form>
 </div>
+<center><h1>Add Equipment</h1></center>
 {% for j in messages %}
 <h3>{{j}}</h3>
 {{break}}
@@ -67,7 +68,7 @@ if you don't get Equipment name  then first register Equipment
                 </select>
             </td>
             <td><marquee  direction="left" scrollamount="5">
-if you don't get plant id then first insert plant data
+if you don't get plant id then first insert plant data and if you want to only add equpment the select warehouse
 </marquee></td>
         </tr>
         <tr>
@@ -89,7 +90,21 @@ if you don't get plant id then first insert plant data
             <td>Dimension</td>
             <td><input type="text" placeholder="dimension" name="dimension"></td>
         </tr>
+
         <tr>
+            <td>Ware house</td>
+            <td>
+                <select name="warehouse" >
+                    {% for wa in wh %}
+                    <option value="{{wa.warehouseid}}">id  : {{wa.warehouseid}} name : {{wa.warehousename}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+            <td><marquee  direction="left" scrollamount="5">
+Select none if you want to only add equipment to client
+</marquee></td>
+        </tr>
+         <tr>
             <td colspan="2" align="right"><input type="submit" value="Add equepment"></td>
         </tr>
     </table>

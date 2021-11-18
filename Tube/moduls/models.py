@@ -26,7 +26,6 @@ class User(models.Model):
     status = models.IntegerField(choices=STATUS_CHOICES)
     created = models.DateTimeField(auto_now_add=True)
     modify = models.DateTimeField(auto_now=True)
-
 # #
 # class Country(models.Model):
 #     countryid = models.AutoField(primary_key=True)
@@ -86,11 +85,10 @@ class Plant(models.Model):
     plantid = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100)
     #change client to project and add city
-    projectid = models.ForeignKey(Project,on_delete=models.CASCADE)
+    city = models.CharField(max_length=50,null=True)
+    projectid = models.ForeignKey(Project,on_delete=models.CASCADE,null=True)
     created = models.DateTimeField(auto_now_add=True)
     modify = models.DateTimeField(auto_now=True)
-
-
 
 # class EquepmentMaster(models.Model):
 #     equepmentSerialNumbeer = models.CharField(max_length=50)
@@ -105,26 +103,10 @@ class Plant(models.Model):
 #     details = models.CharField(max_length=200)
 #     dimension = models.CharField(max_length=50)
 
+
 class Equepmentdetails2(models.Model):
     equepmentid = models.AutoField(primary_key=True)
     equepmentname = models.CharField(max_length=50)
-
-
-class EquepmentMaster(models.Model):
-    equepmentid = models.ForeignKey(Equepmentdetails2,on_delete=models.CASCADE)
-    equepmentSerialNumbeer = models.CharField(max_length=50)
-    equepmentcity = models.CharField(max_length=100)
-    #cityid = models.ForeignKey(to='cities_light.City', on_delete=models.CASCADE)
-    plantid = models.ForeignKey(Plant,on_delete=models.CASCADE)
-    status = models.IntegerField(choices=STATUS_CHOICES)
-    created = models.DateTimeField(auto_now_add=True)
-    modify = models.DateTimeField(auto_now=True)
-    details = models.CharField(max_length=200)
-    dimension = models.CharField(max_length=50)
-
-
-
-
 
 
 class Warehouse(models.Model):
@@ -135,6 +117,23 @@ class Warehouse(models.Model):
     #cityid = models.ForeignKey(to='cities_light.City', on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     modify = models.DateTimeField(auto_now=True)
+
+
+class EquepmentMaster(models.Model):
+    equepmentid = models.ForeignKey(Equepmentdetails2,on_delete=models.CASCADE)
+    equepmentSerialNumbeer = models.CharField(max_length=50,unique=True)
+    equepmentcity = models.CharField(max_length=100,default="in ware house")
+    #cityid = models.ForeignKey(to='cities_light.City', on_delete=models.CASCADE)
+    plantid = models.ForeignKey(Plant,on_delete=models.CASCADE,null=True)
+    status = models.IntegerField(choices=STATUS_CHOICES)
+    created = models.DateTimeField(auto_now_add=True)
+    modify = models.DateTimeField(auto_now=True)
+    details = models.CharField(max_length=200)
+    dimension = models.CharField(max_length=50)
+    warehouseid =models.ForeignKey(Warehouse,on_delete=models.CASCADE)
+
+
+
 
 
 
