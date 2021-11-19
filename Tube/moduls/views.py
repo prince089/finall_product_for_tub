@@ -39,10 +39,11 @@ def addclient(request):
         email = request.POST['email']
         contect_number = request.POST['number']
         address = request.POST['address']
+        county = request.POST['country']
         #country = request.POST['country']
         city = request.POST['city']
         try:
-            client = Client(clientname=name,compenyname=compnyname,email=email,phone=contect_number,address=address,clientcity = city)
+            client = Client(clientname=name,compenyname=compnyname,email=email,phone=contect_number,address=address,clientcity = city,clientcountry=county)
             client.save()
         except:
             messages.info(request, 'please validat your data')

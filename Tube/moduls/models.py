@@ -57,23 +57,33 @@ class User(models.Model):
 
 class Client(models.Model):
     clientid = models.AutoField(primary_key=True)
-    clientname = models.CharField(max_length=100)
-    compenyname = models.CharField(max_length=200)
+    clientname = models.CharField(max_length=50)
+    compenyname = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
     phone = models.IntegerField()
     address = models.CharField(max_length=100)
     #cityid = models.ForeignKey(to='cities_light.City',on_delete=models.CASCADE)
-    clientcity = models.CharField(max_length=100)
+    clientcity = models.CharField(max_length=40)
+    clientcountry = models.CharField(max_length=40)
     created = models.DateTimeField(auto_now_add=True)
     modify = models.DateTimeField(auto_now=True)
+
+
+class Site(models.Model):
+    siteid = models.AutoField(primary_key=True)
+    clientid = models.ForeignKey(Client,on_delete=models.CASCADE)
+    #disp_siteid = models.CharField(max_length=20)
+    sitecity = models.CharField(max_length=50),
+    sitecountry = models.CharField(max_length=50)
 
 
 class Project(models.Model):
     projectid =  models.AutoField(primary_key=True)
     projecttitle = models.CharField(max_length=100)
-    clientid = models.ForeignKey(Client,on_delete=models.CASCADE)
+    siteid = models.ForeignKey(Site,on_delete=models.CASCADE)
     address = models.CharField(max_length=200)
-    projectcity = models.CharField(max_length=100)
+    projectcity = models.CharField(max_length=40)
+    projectcountry = models.CharField(max_length=30)
     #cityid = models.ForeignKey(to='cities_light.City', on_delete=models.CASCADE)
     contecnumber = models.IntegerField()
     state = models.IntegerField(choices=STATUS_CHOICES)

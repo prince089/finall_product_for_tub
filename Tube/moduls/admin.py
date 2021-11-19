@@ -38,14 +38,14 @@ admin.site.register(User,userAdmin)
 
 
 class userClient(admin.ModelAdmin):
-    list_display =('clientid','clientname','compenyname','email','phone','address','clientcity','created','modify')
+    list_display =('clientid','clientname','compenyname','email','phone','address','clientcity','clientcountry','created','modify')
 
 
 admin.site.register(Client,userClient)
 
 
 class userProject(admin.ModelAdmin):
-    list_display =('projectid','projecttitle','clientid','address','projectcity','contecnumber','state','created','modify')
+    list_display =('projectid','projecttitle','siteid','address','projectcity','projectcountry','contecnumber','state','created','modify')
 
 
 admin.site.register(Project,userProject)
