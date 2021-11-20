@@ -3,6 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+           .logout{
+            position:absolute;
+            top:0;
+            right:0;
+            display: inline;
+            background-color: aquamarine;
+        }
+        #sides{
+margin:0;
+}
+#left{
+float:left;
+width:15%;
+overflow:hidden;
+background-color: aquamarine;
+
+}
+#right{
+float:left;
+width:75%;
+overflow:hidden;
+padding: 20px;
+}
+    </style>
 </head>
 <body>
 <div class="logout">
@@ -13,11 +38,43 @@
 </div>
 
 <center><h1>Equipment List</h1></center>
+<div id="left">
+<h3>List</h3>
+<ul>
+    <li><a href="{% url 'vequepment'%}">Equipment</a></li>
 
-<form action="{%url 'vequepment'%}" method="post">
+    <li><a href="{% url 'vwherehouse'%}">Warehouse</a></li>
+    <li><a href="{% url 'vclient'%}">Client</a></li>
+    <li><a href="{% url 'vproject'%}">Project</a></li>
+    <li><a href="{% url 'vplant'%}">Plant</a></li>
+<!--    <li><a href="{% url 'addclient'%}">city</a></li>-->
+</ul>
+<h3>Add</h3>
+<ul>
+
+    <li><a href="{% url 'addclient'%}">Client</a></li>
+    <li><a href="{% url 'addsite'%}">Site</a></li>
+    <li><a href="{% url 'addproject'%}">Project</a></li>
+    <li><a href="{% url 'addplant'%}">Plant</a></li>
+    <li><a href="{% url 'registerequipement'%}">Register Equipment</a></li>
+    <li><a href="{% url 'addequepment'%}">Equipment</a></li>
+    <li><a href="{% url 'addwherehouse'%}">Warehouse</a></li>
+
+</ul>
+    <h3>Return</h3>
+    <ul>
+        <li><a href="{% url 'returnequipment' %}">Return Equipment</a></li>
+        <li><a href="{% url 'assigenequipment' %}">Assign Equipment</a></li>
+
+
+    </ul>
+    </div>
+
+<div id="right">
+    <form action="{%url 'vequepment'%}" method="post">
     {% csrf_token %}
     <select name="search">
-        
+
         {% for a in ed %}
         <option value="{{a.equepmentid.equepmentid}}">{{a.equepmentid.equepmentname}}</option>
         {% endfor %}
@@ -61,5 +118,9 @@
     </tr>
     {% endfor %}
 </table>
+
+</div>
+
+
 </body>
 </html>
