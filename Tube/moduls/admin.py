@@ -76,3 +76,10 @@ class userwhWarehouse(admin.ModelAdmin):
 
 
 admin.site.register(Warehouse,userwhWarehouse)
+
+
+class userSite(admin.ModelAdmin):
+    list_display = ('siteid','clientid','sitecity','sitecountry','created','modify')
+
+
+admin.site.register(Site,userSite)

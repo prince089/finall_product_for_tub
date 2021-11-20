@@ -19,5 +19,6 @@ urlpatterns = [
     path('vwherehouse',views.vwherehouse,name="vwherehouse"),
     path('addregisterEquipment',views.registerequipment,name="registerequipement"),
     path('returnEquipment',views.returnequipmant,name="returnequipment"),
-    path('assignEquipment',views.assign,name = "assigenequipment")
+    path('assignEquipment',views.assign,name = "assigenequipment"),
+    path('addsite',views.addsite,name = "addsite")
 ]

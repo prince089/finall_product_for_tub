@@ -132,13 +132,15 @@ def addplant(request):
 
 
 def addproject(request):
-    cliid = Client.objects.all()
+    cliid = Site.objects.all()
+    #sidata = Site.objects.all()
     if request.method == 'POST':
         title = request.POST['projecttitle']
-        clientid = Client.objects.get(clientid=request.POST['cid'])
-        print(clientid)
+        clientid = Site.objects.get(siteid=request.POST['cid'])
+        #print(clientid)
         address = request.POST['address']
         projecctCity = request.POST['projectcity']
+        projectcountry = request.POST['projectcountry']
         phonenumber = request.POST['contectnumber']
         status = request.POST['status']
         if status == "inactive":
@@ -150,8 +152,8 @@ def addproject(request):
         else:
             status = 0
         try:
-            prodata = Project(projecttitle=title, clientid=clientid, address=address, projectcity=projecctCity,
-                              contecnumber=phonenumber, state=status)
+            prodata = Project(projecttitle=title, siteid=clientid, address=address, projectcity=projecctCity,
+                              projectcountry=projectcountry,contecnumber=phonenumber, state=status)
             prodata.save()
         except:
             messages.info(request, 'please validat your data')
@@ -269,3 +271,22 @@ def assign(request):
         return render(request, 'assigenEquipment.html')
     else:
         return render(request, 'assigenEquipment.html',{'ae':avalibe_eq,'city':city})
+
+
+def addsite(request):
+    cldata = Client.objects.all()
+    if request.method == 'POST':
+        clientid = Client.objects.get(clientid= request.POST['cid'])
+        city = request.POST['city']
+        country = request.POST['country']
+        try:
+            sd = Site(clientid=clientid, sitecity=city, sitecountry=country)
+            sd.save()
+        except:
+            messages.info(request, 'please validat your data')
+            return render(request, 'addsite.html',{'cldata': cldata})
+        messages.info(request, 'data saved sucess')
+    return render(request, 'addsite.html', {'cldata': cldata})
+
+
+

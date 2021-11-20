@@ -73,8 +73,10 @@ class Site(models.Model):
     siteid = models.AutoField(primary_key=True)
     clientid = models.ForeignKey(Client,on_delete=models.CASCADE)
     #disp_siteid = models.CharField(max_length=20)
-    sitecity = models.CharField(max_length=50),
+    sitecity = models.CharField(max_length=50)
     sitecountry = models.CharField(max_length=50)
+    created = models.DateTimeField(auto_now_add=True)
+    modify = models.DateTimeField(auto_now=True)
 
 
 class Project(models.Model):

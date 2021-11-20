@@ -35,11 +35,11 @@
             <td><input type="text" placeholder="project title" name="projecttitle"></td>
         </tr>
         <tr>
-           <td>Client ID</td>
+           <td>Site ID</td>
             <td>
-                <select name="cid" id="">
+                <select name="cid">
                     {% for b in clid %}
-                    <option value="{{b.clientid}}">id:{{b.clientid}}, Name:{{b.clientname}}</option>
+                    <option value="{{b.siteid}}">id:{{b.siteid}}, Name:{{b.clientid.clientname}}</option>
                     {% endfor %}
                 </select>
             </td>
@@ -55,9 +55,13 @@ if you don't get Client id then first insert Client
             <td>Project City</td>
             <td><input type="text" placeholder="cityName" name="projectcity"></td>
         </tr>
+         <tr>
+            <td>Project Country</td>
+            <td><input type="text" placeholder="cityName" name="projectcountry"></td>
+        </tr>
         <tr>
             <td>Phone number</td>
-            <td><input type="text" placeholder="Phone number" name="contectnumber" maxlength="10"></td>
+            <td><input type="text" placeholder="Phone number" name="contectnumber"></td>
         </tr>
         <tr>
             <td>Status</td>
