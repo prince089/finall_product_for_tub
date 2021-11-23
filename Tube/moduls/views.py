@@ -23,7 +23,8 @@ def index(request):
 
 
 def home(request):
-    return render(request,'home.html')
+    equepmentdata = EquepmentMaster.objects.all()
+    return render(request,'home.html',{'edt':equepmentdata})
 
 
 def logout(request):
