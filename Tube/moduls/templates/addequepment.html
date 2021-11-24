@@ -98,31 +98,14 @@ padding: 20px;
 if you don't get Equipment name  then first register Equipment
 </marquee></td>
         </tr>
-        <tr>
-            <td>City Name</td>
-            <td><input type="text" placeholder="cityname" name="cityid"></td>
-        </tr>
-        <tr>
-            <td>Plant id</td>
-            <td>
 
-                <select name="plantid" id="">
-                     {% for a in plant %}
-                        <option value="{{a.plantid}}">id:{{a.plantid}} , Name:{{a.title}}</option>
-                     {% endfor %}
-                </select>
-            </td>
-            <td><marquee  direction="left" scrollamount="5">
-if you don't get plant id then first insert plant data and if you want to only add equpment the select warehouse
-</marquee></td>
-        </tr>
         <tr>
             <td>Status</td>
             <td>
-                <select name="status">
+                <select name="status" aria-readonly="true">
                     <option value="inactive">inactive</option>
-                    <option value="active">active</option>
-                     <option value="deleted">deleted</option>
+<!--                    <option value="active">active</option>-->
+<!--                     <option value="deleted">deleted</option>-->
                 </select>
             </td>
 
@@ -145,9 +128,7 @@ if you don't get plant id then first insert plant data and if you want to only a
                     {% endfor %}
                 </select>
             </td>
-            <td><marquee  direction="left" scrollamount="5">
-Select none if you want to only add equipment to client
-</marquee></td>
+
         </tr>
          <tr>
             <td colspan="2" align="right"><input type="submit" value="Add equepment"></td>

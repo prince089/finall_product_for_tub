@@ -52,14 +52,15 @@
                                     <a class="nav-link" href="{% url 'addwherehouse'%}">Warehouse</a>
                                 </nav>
                             </div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                List and Task
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                            <!--                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">-->
+<!--                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>-->
+<!--                                List and Task-->
+<!--                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>-->
+<!--                            </a>-->
+<!--                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">-->
+<!--                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">-->
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                        <div class="sb-nav-link-icon"> <div class="sb-nav-link-icon"><i class="fa fa-list-alt" aria-hidden="true"></i></div></div>
                                         List
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
@@ -73,6 +74,11 @@
                                         </nav>
                                     </div>
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                                        <div class="sb-nav-link-icon">
+                                <div class="sb-nav-link-icon">
+                                    <i class="fa fa-tasks" aria-hidden="true"></i>
+                                </div>
+                            </div>
                                         Task
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
@@ -83,8 +89,8 @@
 
                                         </nav>
                                     </div>
-                                </nav>
-                            </div>
+<!--                                </nav>-->
+<!--                            </div>-->
                             <div class="sb-sidenav-menu-heading">Recipt</div>
 
                             <a class="nav-link" href="tables.html">
@@ -116,9 +122,9 @@
                                         <td>Serial number</td>
                                         <td>Equipment name</td>
                                         <td>Equipment Id</td>
-                                        <td>Site</td>
-                                        <td>Plant id</td>
-                                        <td>Plant name</td>
+<!--                                        <td>Site</td>-->
+<!--                                        <td>Plant id</td>-->
+<!--                                        <td>Plant name</td>-->
                                         <td>Equipment Status</td>
                                         <td>Equipment Details</td>
                                         <td>Equipment Dimension</td>
@@ -132,10 +138,10 @@
                                         <td>{{i.equepmentSerialNumbeer}}</td>
                                         <td>{{i.equepmentid.equepmentname}}</td>
                                         <td>{{i.equepmentid.equepmentid}}</td>
-                                        <td>{{i.plantid.projectid.siteid.sitecity}}</td>
-                                        <td>{{i.plantid.plantid}}</td>
-                                        <td>{{i.plantid.title}}</td>
-                                        <td>{{i.status}}</td>
+<!--                                        <td>{{i.plantid.projectid.siteid.sitecity}}</td>-->
+<!--                                        <td>{{i.plantid.plantid}}</td>-->
+<!--                                        <td>{{i.plantid.title}}</td>-->
+<!--                                        <td>{{i.status}}</td>-->
                                         <td>{{i.details}}</td>
                                         <td>{{i.dimension}}</td>
                                         <td>{{i.created}}</td>

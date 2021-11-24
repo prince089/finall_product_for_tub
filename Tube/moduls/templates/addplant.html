@@ -83,16 +83,16 @@ padding: 20px;
             <td><input type="text" placeholder="Title" name="title"></td>
         </tr>
         <tr>
-            <td>Project ID</td>
+            <td>Site </td>
             <td>
                 <select name="cid" id="">
                     {% for b in clid %}
-                    <option value="{{b.projectid}}">id:{{b.projectid}}, Name:{{b.projecttitle}}</option>
+                    <option value="{{b.siteid}}">id:{{b.siteid}}, Name:{{b.sitecity}}</option>
                     {% endfor %}
                 </select>
             </td>
              <td><marquee  direction="left" scrollamount="5" width="100%">
-if you don't get Client id then first insert Client
+if you don't get Site id then first insert Site data
 </marquee></td>
         </tr>
         <tr>

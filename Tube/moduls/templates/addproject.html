@@ -84,11 +84,11 @@ padding: 20px;
             <td><input type="text" placeholder="project title" name="projecttitle"></td>
         </tr>
         <tr>
-           <td>Site ID</td>
+           <td>Plant </td>
             <td>
                 <select name="cid">
                     {% for b in clid %}
-                    <option value="{{b.siteid}}">id:{{b.siteid}}, Name:{{b.clientid.clientname}}</option>
+                    <option value="{{b.plantid}}">id:{{b.plantid}}, Name:{{b.title}}</option>
                     {% endfor %}
                 </select>
             </td>

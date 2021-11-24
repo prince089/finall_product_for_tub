@@ -86,7 +86,7 @@ padding: 20px;
             <td>Equipment details</td>
             <td><select name="equipment_details" >
                 {% for d in eq%}
-                <option value="{{d.equepmentSerialNumbeer}}">id = {{d.equepmentid.equepmentid}},name = {{d.equepmentid.equepmentname}},  plant = {{d.plantid.title}}</option>
+                <option value="{{d.equepmentSerialNumbeer}}">id = {{d.equepmentid.equepmentid}},name = {{d.equepmentid.equepmentname}},  serial number = {{d.equepmentSerialNumbeer}}</option>
                 {% endfor %}
             </select>
             </td>
@@ -102,15 +102,7 @@ padding: 20px;
                 </select>
             </td>
         </tr>
-        <tr>
-            <td>City</td>
-            <td>"Warehouse" Copy from here</td>
-            <td><input type="text" name="city"></td>
-            <td><marquee  direction="left" scrollamount="5" width="100%">
-                    if you gone assign equipment to warehouse the write "Warehouse" other then that write city
-                </marquee>
-            </td>
-        </tr>
+
 
     </table>
     <input type="submit" value="Return equipment to warehouse">

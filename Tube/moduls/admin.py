@@ -45,20 +45,20 @@ admin.site.register(Client,userClient)
 
 
 class userProject(admin.ModelAdmin):
-    list_display =('projectid','projecttitle','siteid','address','projectcity','projectcountry','contecnumber','state','created','modify')
+    list_display =('projectid','projecttitle','plantid','address','projectcity','projectcountry','contecnumber','state','created','modify')
 
 
 admin.site.register(Project,userProject)
 
 
 class userPlant(admin.ModelAdmin):
-    list_display = ('plantid','title','city','projectid','created','modify')
+    list_display = ('plantid','title','city','siteid','created','modify')
 
 
 admin.site.register(Plant,userPlant)
 
 class useEquepmentMaster(admin.ModelAdmin):
-    list_display = ('equepmentid','equepmentSerialNumbeer','equepmentcity','plantid','status','created','modify','details','dimension','warehouseid')
+    list_display = ('equepmentid','equepmentSerialNumbeer','status','created','modify','details','dimension','warehouseid')
 
 
 admin.site.register(EquepmentMaster,useEquepmentMaster)
@@ -83,3 +83,10 @@ class userSite(admin.ModelAdmin):
 
 
 admin.site.register(Site,userSite)
+
+
+class userAssigenedequipment(admin.ModelAdmin):
+    list_display = ('assignid','projectid','subequipmentsr')
+
+
+admin.site.register(Assignedequipment,userAssigenedequipment)

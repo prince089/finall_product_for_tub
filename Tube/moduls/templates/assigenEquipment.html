@@ -87,7 +87,7 @@ padding: 20px;
             <td>Equipment details</td>
             <td><select name="equipment_details" >
                 {% for d in ae%}
-                <option value="{{d.equepmentSerialNumbeer}}">id = {{d.equepmentid.equepmentid}},name = {{d.equepmentid.equepmentname}},  plant = {{d.plantid.title}}</option>
+                <option value="{{d.equepmentSerialNumbeer}}">id : {{d.equepmentid.equepmentid}},  name : {{d.equepmentid.equepmentname}}  serial number  :{{d.equepmentSerialNumbeer}}</option>
                 {% endfor %}
             </select>
             </td>
@@ -98,15 +98,16 @@ padding: 20px;
             <td>
                 <select name="city">
                     {% for c in city%}
-                    <option value="{{c.plantid}}">{{c.title}}</option>
+                    <option value="{{c.projectid}}">{{c.projecttitle}} a</option>
                     {% endfor %}
                 </select>
             </td>
 
         </tr>
 
+
     </table>
-    <input type="submit" value="Return equipment to warehouse">
+    <input type="submit" value="Assigen">
 
 </form>
 

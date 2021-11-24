@@ -75,7 +75,7 @@ def registerequipment(request):
 
 
 def addequepment(request):
-    plant = Plant.objects.all()
+    # plant = Project.objects.all()
     eq  = Equepmentdetails2.objects.all()
     warehouse = Warehouse.objects.all()
     # citi = Client.objects.all()
@@ -83,17 +83,10 @@ def addequepment(request):
     if request.method == 'POST':
         serialnumber = request.POST['serialnumber']
         name = Equepmentdetails2.objects.get(equepmentid=request.POST['idname'])
-        cityid = request.POST['cityid']
-        plantid= Plant.objects.get(plantid=request.POST['plantid'])
-        status = request.POST['status']
-        if status == "inactive":
-            status = 0
-        elif status == "active":
-            status = 1
-        elif status == "deleted":
-            status = 2
-        else:
-            status = 0
+        # cityid = request.POST['cityid']
+        # plantid= Project.objects.get(projectid=request.POST['plantid'])
+        status = 0
+
         descripation = request.POST['descripation']
         dimension = request.POST['dimension']
         ware =Warehouse.objects.get(warehouseid= request.POST['warehouse'])
@@ -102,25 +95,26 @@ def addequepment(request):
         # ed.save()
 
         try:
-            equepment = EquepmentMaster(equepmentid=name,equepmentSerialNumbeer=serialnumber,equepmentcity=cityid,plantid=plantid,status=status,details=descripation,dimension=dimension,warehouseid=ware)
+            equepment = EquepmentMaster(equepmentid=name, equepmentSerialNumbeer=serialnumber, details=descripation,
+                                            dimension=dimension, warehouseid=ware,status=status)
             equepment.save()
         except:
             messages.info(request, 'please validat your data')
-            return render(request, 'addequepment.html',{'plant':plant,'eq':eq,'wh':warehouse})
+            return render(request, 'addequepment.html',{'eq':eq,'wh':warehouse})
         messages.info(request, 'data saved sucess')
-        return render(request,'addequepment.html',{'plant':plant,'eq':eq,'wh':warehouse})
+        return render(request,'addequepment.html',{'eq':eq,'wh':warehouse})
     else:
-        return render(request, 'addequepment.html',{'plant':plant,'eq':eq,'wh':warehouse})
+        return render(request, 'addequepment.html',{'eq':eq,'wh':warehouse})
 
 
 def addplant(request):
-    cliid = Project.objects.all()
+    cliid = Site.objects.all()
     if request.method == 'POST':
         title = request.POST['title']
-        clientid = Project.objects.get(projectid=request.POST['cid'])
+        clientid = Site.objects.get(siteid=request.POST['cid'])
         city = request.POST['city']
         try:
-            plantdata = Plant(title=title,city=city,projectid=clientid)
+            plantdata = Plant(title=title,city=city,siteid=clientid)
             plantdata.save()
         except:
             messages.info(request, 'please validat your data')
@@ -133,11 +127,11 @@ def addplant(request):
 
 
 def addproject(request):
-    cliid = Site.objects.all()
+    cliid = Plant.objects.all()
     #sidata = Site.objects.all()
     if request.method == 'POST':
         title = request.POST['projecttitle']
-        clientid = Site.objects.get(siteid=request.POST['cid'])
+        clientid = Plant.objects.get(plantid=request.POST['cid'])
         #print(clientid)
         address = request.POST['address']
         projecctCity = request.POST['projectcity']
@@ -153,7 +147,7 @@ def addproject(request):
         else:
             status = 0
         try:
-            prodata = Project(projecttitle=title, siteid=clientid, address=address, projectcity=projecctCity,
+            prodata = Project(projecttitle=title, plantid=clientid, address=address, projectcity=projecctCity,
                               projectcountry=projectcountry,contecnumber=phonenumber, state=status)
             prodata.save()
         except:
@@ -234,14 +228,14 @@ def returnequipmant(request):
     wh = Warehouse.objects.all()
     if request.method == 'POST':
         srno = request.POST['equipment_details']
-        city = request.POST['city']
+        #city = request.POST['city']
         ware = Warehouse.objects.get(warehouseid=request.POST['warehouse_details'])
         t = EquepmentMaster.objects.get(equepmentSerialNumbeer=srno)
         try:
-            t.equepmentcity = city
+            #t.equepmentcity = city
             t.warehouseid = ware
             t.status = 0
-            t.plantid = None
+            #t.plantid = None
             t.save()
         except:
             messages.info(request, 'please validat your data')
@@ -254,22 +248,24 @@ def returnequipmant(request):
 
 def assign(request):
     avalibe_eq = EquepmentMaster.objects.filter(status=0)
-    city = Plant.objects.all()
+    city = Project.objects.all()
 
     if request.method == 'POST':
         srno = request.POST['equipment_details']
-        pland_id = Plant.objects.get(plantid = request.POST['city'])
+        pland_id = Project.objects.get(projectid = request.POST['city'])
         #status = 1
+
         t = EquepmentMaster.objects.get(equepmentSerialNumbeer=srno)
-        t.plantid=pland_id
         t.status=1
-        t.warehouseid = Warehouse.objects.get(warehouseid = 6)
+        t.warehouseid = Warehouse.objects.get(warehouseid = 8)
         t.save()
+        assigndata = Assignedequipment(projectid=pland_id,subequipmentsr=srno)
+        assigndata.save()
 
 
 
 
-        return render(request, 'assigenEquipment.html')
+        return render(request, 'assigenEquipment.html',{{'ae':avalibe_eq,'city':city}})
     else:
         return render(request, 'assigenEquipment.html',{'ae':avalibe_eq,'city':city})
 

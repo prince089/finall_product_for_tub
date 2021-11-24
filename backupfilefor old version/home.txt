@@ -54,7 +54,7 @@ padding: 20px;
     <li><a href="{% url 'vclient'%}">Client</a></li>
     <li><a href="{% url 'vproject'%}">Project</a></li>
     <li><a href="{% url 'vplant'%}">Plant</a></li>
-<!--    <li><a href="{% url 'addclient'%}">city</a></li>-->
+
 </ul>
 <h3>Add</h3>
 <ul>

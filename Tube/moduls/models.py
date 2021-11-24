@@ -1,7 +1,5 @@
 from django.db import models
 
-#from django.db import
-
 STATUS_CHOICES = (
     (0, 'inactive'),
     (1, 'active'),
@@ -62,7 +60,6 @@ class Client(models.Model):
     email = models.EmailField(unique=True)
     phone = models.IntegerField()
     address = models.CharField(max_length=100)
-    #cityid = models.ForeignKey(to='cities_light.City',on_delete=models.CASCADE)
     clientcity = models.CharField(max_length=40)
     clientcountry = models.CharField(max_length=40)
     created = models.DateTimeField(auto_now_add=True)
@@ -72,23 +69,8 @@ class Client(models.Model):
 class Site(models.Model):
     siteid = models.AutoField(primary_key=True)
     clientid = models.ForeignKey(Client,on_delete=models.CASCADE)
-    #disp_siteid = models.CharField(max_length=20)
     sitecity = models.CharField(max_length=50)
     sitecountry = models.CharField(max_length=50)
-    created = models.DateTimeField(auto_now_add=True)
-    modify = models.DateTimeField(auto_now=True)
-
-
-class Project(models.Model):
-    projectid =  models.AutoField(primary_key=True)
-    projecttitle = models.CharField(max_length=100)
-    siteid = models.ForeignKey(Site,on_delete=models.CASCADE)
-    address = models.CharField(max_length=200)
-    projectcity = models.CharField(max_length=40)
-    projectcountry = models.CharField(max_length=30)
-    #cityid = models.ForeignKey(to='cities_light.City', on_delete=models.CASCADE)
-    contecnumber = models.IntegerField()
-    state = models.IntegerField(choices=STATUS_CHOICES)
     created = models.DateTimeField(auto_now_add=True)
     modify = models.DateTimeField(auto_now=True)
 
@@ -96,9 +78,23 @@ class Project(models.Model):
 class Plant(models.Model):
     plantid = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100)
-    #change client to project and add city
     city = models.CharField(max_length=50,null=True)
-    projectid = models.ForeignKey(Project,on_delete=models.CASCADE,null=True)
+    siteid = models.ForeignKey(Site, on_delete=models.CASCADE)
+
+    created = models.DateTimeField(auto_now_add=True)
+    modify = models.DateTimeField(auto_now=True)
+
+
+class Project(models.Model):
+    projectid =  models.AutoField(primary_key=True)
+    projecttitle = models.CharField(max_length=100)
+    plantid = models.ForeignKey(Plant,on_delete=models.CASCADE)
+    address = models.CharField(max_length=200)
+    projectcity = models.CharField(max_length=40)
+    projectcountry = models.CharField(max_length=30)
+    #cityid = models.ForeignKey(to='cities_light.City', on_delete=models.CASCADE)
+    contecnumber = models.IntegerField()
+    state = models.IntegerField(choices=STATUS_CHOICES)
     created = models.DateTimeField(auto_now_add=True)
     modify = models.DateTimeField(auto_now=True)
 
@@ -126,17 +122,16 @@ class Warehouse(models.Model):
     warehousename = models.CharField(max_length=30)
     address = models.CharField(max_length=100)
     werehousecity = models.CharField(max_length=100)
-    #cityid = models.ForeignKey(to='cities_light.City', on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     modify = models.DateTimeField(auto_now=True)
 
 
 class EquepmentMaster(models.Model):
+    subequipmentid = models.AutoField(primary_key=True)
     equepmentid = models.ForeignKey(Equepmentdetails2,on_delete=models.CASCADE)
     equepmentSerialNumbeer = models.CharField(max_length=50,unique=True)
-    equepmentcity = models.CharField(max_length=100,default="in ware house")
-    #cityid = models.ForeignKey(to='cities_light.City', on_delete=models.CASCADE)
-    plantid = models.ForeignKey(Plant,on_delete=models.CASCADE,null=True)
+    # equepmentcity = models.CharField(max_length=100,default="in ware house")
+    # projectid = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)
     status = models.IntegerField(choices=STATUS_CHOICES)
     created = models.DateTimeField(auto_now_add=True)
     modify = models.DateTimeField(auto_now=True)
@@ -145,7 +140,10 @@ class EquepmentMaster(models.Model):
     warehouseid =models.ForeignKey(Warehouse,on_delete=models.CASCADE)
 
 
-
+class Assignedequipment(models.Model):
+    assignid = models.AutoField(primary_key=True)
+    projectid = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)
+    subequipmentsr = models.CharField(max_length=50)
 
 
 

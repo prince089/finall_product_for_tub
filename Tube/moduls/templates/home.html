@@ -13,6 +13,64 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
+      <!-- Modal add client -->
+  <div class="modal fade" id="modeladdclient" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Client</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <table>
+                <tr>
+                    <div class="mb-3"></div>
+                    <td>
+                        <label for="exampleFormControlInput1" class="form-label">serial number</label>
+                      </td>
+                    </div>
+                    <td>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    </td>
+                </tr>
+                <tr>
+                    <div class="mb-3"></div>
+                    <td><label for="exampleFormControlInput1" class="form-label">Equipment name</label></td>
+                    <td><select name="" id="">
+                        <option value="">Equipment 1</option>
+                        <option value="">Equipment 2</option>
+                    </select></td>
+                </div>
+                </tr>
+                <tr>
+                    <div class="mb-3"></div>
+                    <td> <label for="exampleFormControlInput1" class="form-label">status</label></td>
+                    <td><select name="" id="">
+                        <option value="">inactive </option>
+                        <option value="">active </option>
+                        <option value="">deleted </option>
+                    </select></td>
+                </div>
+                </tr>
+            </table>
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 
             <a class="navbar-brand ps-3" href="index.html">Welcome</a>
@@ -43,7 +101,7 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{% url 'addclient'%}  ">Client</a>
+                                    <a class="nav-link"  data-bs-toggle="modal" data-bs-target="#modeladdclient">Client</a>
                                     <a class="nav-link" href="{% url 'addsite'%}">Site</a>
                                     <a class="nav-link" href="{% url 'addproject'%}">Project</a>
                                     <a class="nav-link" href="{% url 'addplant'%}">Plant</a>
@@ -52,14 +110,15 @@
                                     <a class="nav-link" href="{% url 'addwherehouse'%}">Warehouse</a>
                                 </nav>
                             </div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                List and Task
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+<!--                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">-->
+<!--                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>-->
+<!--                                List and Task-->
+<!--                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>-->
+<!--                            </a>-->
+<!--                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">-->
+<!--                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">-->
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                        <div class="sb-nav-link-icon"> <div class="sb-nav-link-icon"><i class="fa fa-list-alt" aria-hidden="true"></i></div></div>
                                         List
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
@@ -73,6 +132,11 @@
                                         </nav>
                                     </div>
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                                        <div class="sb-nav-link-icon">
+                                <div class="sb-nav-link-icon">
+                                    <i class="fa fa-tasks" aria-hidden="true"></i>
+                                </div>
+                            </div>
                                         Task
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
@@ -83,8 +147,8 @@
 
                                         </nav>
                                     </div>
-                                </nav>
-                            </div>
+<!--                                </nav>-->
+<!--                            </div>-->
                             <div class="sb-sidenav-menu-heading">Recipt</div>
 
                             <a class="nav-link" href="tables.html">
@@ -111,32 +175,43 @@
                             </div>
                             <div class="card-body">
                                <table id="datatablesSimple">
-                                    <tr>
-                                            <td>Serial number</td>
-                                            <td>Equipment name</td>
-                                            <td>Equipment Id</td>
-                                            <td>Site</td>
-                                            <td>Plant id</td>
-                                            <td>Plant name</td>
-                                            <td>Equipment Status</td>
-                                            <td>Equipment Details</td>
-                                            <td>Equipment Dimension</td>
-                                            <td>Equipment Created</td>
-                                            <td>Equipment Modify</td>
+                                   <thead>
+                                        <tr>
+                                            <th>Serial number</th>
+                                            <th>Equipment name</th>
+                                            <th>Equipment Id</th>
+                                            <th>Equipment Status</th>
+                                            <th>Equipment Details</th>
+                                            <th>Equipment Dimension</th>
+                                            <th>Equipment Created</th>
+                                            <th>Equipment Modify</th>
 
 
                                     </tr>
-                                   <tr>
+                                   </thead>
+                                   <tfoot>
+                                        <tr>
+                                            <th>Serial number</th>
+                                            <th>Equipment name</th>
+                                            <th>Equipment Id</th>
+                                            <th>Equipment Status</th>
+                                            <th>Equipment Details</th>
+                                            <th>Equipment Dimension</th>
+                                            <th>Equipment Created</th>
+                                            <th>Equipment Modify</th>
 
-                                   </tr>
-                                    <tr>
+
+                                    </tr>
+                                   </tfoot>
+                                   <tbody>
+                                   <tr>
                                             {% for i in edt %}
-                                            <td>{{i.equepmentSerialNumbeer}} a</td>
-                                            <td>{{i.equepmentid.equepmentname}} b</td>
-                                            <td>{{i.equepmentid.equepmentid}} c</td>
-                                            <td>{{i.plantid.projectid.siteid.sitecity}}</td>
-                                            <td>{{i.plantid.plantid}}</td>
-                                            <td>{{i.plantid.title}}</td>
+                                            <td>{{i.equepmentSerialNumbeer}} </td>
+                                            <td>{{i.equepmentid.equepmentname}} </td>
+                                            <td>{{i.equepmentid.equepmentid}} </td>
+<!--                                            <td>{{i.plantid.projectid.siteid.sitecity}}</td>-->
+<!--                                            <td>{{i.plantid.plantid}}</td>-->
+<!--                                            <td>{{i.plantid.title}}</td>-->
                                             <td>{{i.status}}</td>
                                             <td>{{i.details}}</td>
                                             <td>{{i.dimension}}</td>
@@ -144,6 +219,9 @@
                                             <td>{{i.modify}}</td>
                                     </tr>
                                         {% endfor %}
+
+                                   </tbody>
+
 
                                </table>
                             </div>
