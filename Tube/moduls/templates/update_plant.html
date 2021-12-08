@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update client</title>
+</head>
+<body>
+<form action="{% url 'updateequipment' updatedata.subequipmentid %}" method="post">
+  {% csrf_token %}
+  <table>
+    <tr>
+      <td><lable>Id</lable></td>
+      <td><input type="text" readonly value="{{updatedata.subequipmentid}}"></td>
+    </tr>
+    <tr>
+      <td>Equipment name</td>
+      <td>
+        <select name="eqid">
+                    <option value="{{updatedata.equepmentid.equepmentid}}">{{updatedata.equepmentid.equepmentid}} name: {{updatedata.equepmentid.equepmentname}}</option>
+                    {% for x in eq%}
+                        {% if updatedata.equepmentid.equepmentid == x.equepmentid.equepmentid %}
+
+                        {% else %}
+                                <option value="{{x.equepmentid.equepmentid}}">{{x.equepmentid}} name : {{x.equepmentname}}</option>
+                        {% endif %}
+
+                    {% endfor %}
+        </select>
+
+      </td>
+    </tr>
+      <tr>
+          <td>Serial number</td>
+          <td><input type="text" name="upserialnumber" value="{{updatedata.equepmentSerialNumbeer}}"></td>
+      </tr>
+    <tr>
+
+<!--      <td>Status</td>-->
+<!--      <td>-->
+<!--        <select name="status">-->
+<!--          <option value="{{updatedata.status}}">{{updatedata.status}}</option>-->
+<!--          <option value="0">inactive</option>-->
+<!--          <option value="1">active</option>-->
+<!--          <option value="2">deleteed</option>-->
+<!--        </select>-->
+<!--      </td>-->
+    </tr>
+    <tr>
+      <td>Details</td>
+      <td><input type="text" value="{{updatedata.details}}" name = "updetails"></td>
+    </tr>
+    <tr>
+      <td>Dimension</td>
+      <td><input type="text" value="{{updatedata.dimension}}" name="updimension"></td>
+    </tr>
+
+    <tr>
+      <td>Warehouse</td>
+      <td>
+        <select name="upwarehouse" >
+                    <option value="{{updatedata.warehouseid.warehouseid}}">id  : {{updatedata.warehouseid.warehouseid}} name : {{updatedata.warehouseid.warehousename}}</option>
+                    {% for wa in wh %}
+                    <option value="{{wa.warehouseid}}">id  : {{wa.warehouseid}},  name : " {{wa.warehousename}} "</option>
+                    {% endfor %}
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right"><input type="submit" value="Update"></td>
+    </tr>
+
+  </table>
+</form>
+</body>
+</html>

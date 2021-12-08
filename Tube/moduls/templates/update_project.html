@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update client</title>
+</head>
+<body>
+<form action="{% url 'updateplant' updatedata.plantid %}" method="post">
+  {% csrf_token %}
+  <table>
+   <tr>
+       <td>Name</td>
+       <td><input type="text" name="upname" value="{{updatedata.title}}"></td>
+   </tr>
+      <tr>
+          <td>City</td>
+          <td><input type="text" name="upcity" value="{{updatedata.city}}"></td>
+      </tr>
+      <tr>
+          <td>Site id</td>
+          <td>
+              <select name="upsiteid" >
+                  <option value="{{updatedata.siteid.siteid}}">Id : {{updatedata.siteid.siteid}},  City : {{updatedata.siteid.sitecity}}</option>
+                  {% for site in  clid%}
+                  <option value="{{site.siteid}}">Id :  {{site.siteid}}, City : {{site.sitecity}}</option>
+                  {% endfor %}
+              </select>
+          </td>
+      </tr>
+    <tr>
+      <td colspan="2" align="right"><input type="submit" value="Update"></td>
+    </tr>
+
+  </table>
+</form>
+</body>
+</html>
